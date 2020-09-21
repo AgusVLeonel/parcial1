@@ -2,4 +2,4 @@
 Primer Parcial Arqui 2C-2020
 
 
-hodslfdsnfd
+hola dos
