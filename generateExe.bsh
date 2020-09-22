@@ -1,4 +1,4 @@
 nasm -f elf32 read.asm
 nasm -f elf32 write.asm
-gcc -c -m32 main(1).c
-gcc -m32 -fno-builtin read.o write.o main(1).o -o programa
+gcc -c -m32 "main(1).c"
+gcc -m32 -fno-builtin read.o write.o "main(1).o" -o programa
