@@ -73,9 +73,9 @@ strlen:
 ;-----------------------------------------------------------
 numToString:
 	
-	mov	[bebp],ebp
+	push	ebp
 	mov	ebp,esp
-	pushad
+
 	mov	ebx,[ebp+8]	;cargo el puntero a la cadena
 	add	ebx,9
 	mov byte [ebx],0
@@ -90,10 +90,9 @@ dividir	mov	edx,0		;limpio
 	jz	end
 	jmp	dividir
 	
-end	call	print	
-	popad
+end	mov	eax,ebx	
 	mov	esp,ebp
-	mov ebp,[bebp]
+	pop	ebp	
 	ret
 	
 section .bss
