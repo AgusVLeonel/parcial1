@@ -21,10 +21,19 @@ void guardarString(int bytes, char * buff, char * fileName) {
 	close(fd);
 }
 
+long int suma(int var1, int var2){
+	return var1 + var2;
+}
+
 
 int main(int argc, char * argv[]) {
 	char buff[SIZE];
-	int bytes = read(0, buff, SIZE);
+	int i;
+	int suma;
+	for(i=0;i<2;i++){
+		int bytes = read(0, buff, SIZE);
+		suma += stringToNum(buff,bytes);
+	}
 	//guardarString(bytes, buff, "salida.txt");
 	write(1, buff, bytes);
 	return 0;
