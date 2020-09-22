@@ -9,7 +9,7 @@ extern int close(int fd);
 
 int stringToNum(char * buff,int bytes){
 	int toReturn,i=0;
-	for(i=0;bytes[i]!=0;i++){
+	for(i=0;buff[i]!=0;i++){
 		toReturn=toReturn*10-buff[i]+'9';
 	}
 	return toReturn;
