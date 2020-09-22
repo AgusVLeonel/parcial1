@@ -1,0 +1,6 @@
+nasm -f elf32 open.asm
+nasm -f elf32 read.asm
+nasm -f elf32 write.asm
+nasm -f elf32 close.asm
+gcc -c -m32 main.c
+gcc -m32 -fno-builtin open.o read.o write.o close.o main.o -o programa
