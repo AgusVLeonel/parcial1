@@ -66,7 +66,7 @@ strlen:
 	ret
 ;-----------------------------------------------------------
 ; Argumentos:
-;	ebp+4: puntero al numero
+;	ebp+12: puntero al numero
 ;	ebp+8: puntero a la cadena
 ; Retorno:
 ;	eax: puntero a la cadena
@@ -80,7 +80,7 @@ numToString:
 	add	ebx,9
 	mov byte [ebx],0
 	mov ecx,10		;divisor
-	mov	eax,[ebp+4]	;dividendo
+	mov	eax,[ebp+12]	;dividendo
 dividir	mov	edx,0		;limpio
 	div	ecx
 	dec	ebx

@@ -3,6 +3,7 @@ extern int open(char * filename, int flags, int mode);
 extern int read(int fd, char * buff, unsigned int count);
 extern int write(int fd, char * buff, unsigned int count);
 extern int close(int fd);
+extern char* numToString(char * cadena, int num);
 
 #include <stdio.h>
 
@@ -33,7 +34,7 @@ long int suma(int var1, int var2){
 	return(long int) var1 + var2;
 }
 
-void numToString(long num, char * buffer){
+void numToString2(long num, char * buffer){
     if (num==0){
       buffer[0] = '0';
       return;
@@ -64,7 +65,6 @@ int main(int argc, char * argv[]) {
 		suma += stringToNum(buff);
 	}
 	//guardarString(bytes, buff, "salida.txt");
-	numToString(suma, buff);
-	write(1, buff, bytes+1);
+	write(1, numToString(buff, suma), bytes);
 	return 0;
 }
