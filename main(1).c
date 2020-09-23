@@ -3,14 +3,15 @@ extern int open(char * filename, int flags, int mode);
 extern int read(int fd, char * buff, unsigned int count);
 extern int write(int fd, char * buff, unsigned int count);
 extern int close(int fd);
-extern char* numToString(int num,char* buff)
+
+#include <stdio.h>
 
 #define SIZE 256
 
 int stringToNum(char * buff){
-	int toReturn,i=0;
-	for(i=0;buff[i]!=0;i++){
-		toReturn=toReturn*10-buff[i]+'9';
+	int toReturn=0,i=0;
+	for(i=0;buff[i]!='\n';i++){
+		toReturn=toReturn*10+buff[i]-'0';
 	}
 	return toReturn;
 }
@@ -32,16 +33,38 @@ long int suma(int var1, int var2){
 	return(long int) var1 + var2;
 }
 
+void numToString(long num, char * buffer){
+    if (num==0){
+      buffer[0] = '0';
+      return;
+    }
+    int i=0;
+    int j=0;
+    while(num > 0){
+        buffer[i++] = num%10 + '0';
+        num = num / 10 ;
+    }
+    char aux; //j apunta al comienzo del buffer, i al final
+    buffer[i--]=0;
+     while(j<i){
+        aux = buffer[i];
+        buffer[i] = buffer[j];
+        buffer[j]=aux;
+        j++;
+        i--;
+    }
+}
 
 int main(int argc, char * argv[]) {
 	char buff[SIZE];
 	int i,bytes;
-	int suma;
+	int suma = 0;
 	for(i=0;i<2;i++){
 		bytes = read(0, buff, SIZE);
 		suma += stringToNum(buff);
 	}
 	//guardarString(bytes, buff, "salida.txt");
-	write(1, numToString(suma,buff), bytes+1);
+	numToString(suma, buff);
+	write(1, buff, bytes+1);
 	return 0;
 }
